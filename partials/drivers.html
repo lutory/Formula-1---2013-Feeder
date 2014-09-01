@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-lg-4">
+		<h1>Drivers</h1>
+	</div>
+	<div class="col-md-4 col-md-offset-4 vcenter">
+		<form class="form-horizontal search-filter">
+			<div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" ng-model="search">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Search</button>
+                </span>
+              </div>
+            </div>
+		</form>
+	</div>
+
+</div>
+<hr>
+<table class="table table-striped">
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>Team</th>
+		<th class="text-center">Points</th>
+	</tr>
+	<tr ng-repeat="driver in driversList | filter: search" ng-class-even="'even-tr'" class="td-element">
+		<td>{{ $index + 1 }}</td>
+		<td>
+			<img ng-src="images/{{ driver.Driver.nationality }}.png" alt="" />
+			<a href="#/driver/{{ driver.Driver.driverId}}" > 
+				{{ driver.Driver.givenName }} {{driver.Driver.familyName}}
+			</a>
+		</td>
+		<td><a href="#/team/{{driver.Constructors[0].constructorId}}">{{driver.Constructors[0].name}}</a></td>
+		<td class="text-center">{{driver.points}}</td>
+	</tr>
+</table>

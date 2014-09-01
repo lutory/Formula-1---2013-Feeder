@@ -1,0 +1,34 @@
+
+<div class="row">
+	<div class="jumbotron">
+		<h1><img ng-src="images/{{ driverInfo.Driver.driverId }}.png" alt="" /> 
+			{{ driverInfo.Driver.givenName }} {{ driverInfo.Driver.familyName }}</h1>
+			<p>Nationality: <img ng-src="images/{{ driverInfo.Driver.nationality }}.png" /> {{ driverInfo.Driver.nationality }}</p>
+			<p>Date of birth: {{ driverInfo.Driver.dateOfBirth }}</p>
+			<p>Info: <a href="{{ driverInfo.Driver.driverId }}" title="{{ driverInfo.Driver.givenName }} {{ driverInfo.Driver.familyName }} - Wiki">Wikipedia.org</a></p>
+	</div>
+</div>
+
+<h2>{{ driverInfo.Driver.givenName }} {{ driverInfo.Driver.familyName }}'s Races 2013</h2>
+<hr>
+<table class="table table-striped table-hover ">
+	<tr>
+		<th>Round</th>
+		<th>GrandPrix</th>
+		<th>Team</th>
+		<th>Finished</th>
+	</tr>
+	<tr ng-repeat="driverRace in driverRaces" >
+		<td>{{ driverRace.round }}</td>
+		<td><img ng-src="images/{{ driverRace.Circuit.Location.country }}.png" alt="" /> {{ driverRace.raceName }}</td>
+		<td>
+			<a href="#/driver/{{ driver.Driver.driverId}}" > 
+				{{ driverRace.Results[0].Constructor.name }} 
+			</a>
+		</td>
+		
+		<td>{{driverRace.Results[0].position}}</td>
+	</tr>
+</table>
+
+
